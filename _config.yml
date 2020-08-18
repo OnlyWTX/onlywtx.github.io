@@ -1,10 +1,10 @@
 # Site settings
-title: BY Blog
-SEOTitle: 吴天的博客 | BY Blog
+title: 一个GISer的博客
+SEOTitle: 吴天的博客
 header-img: img/logo.jpg
 email: wtx13041938212@163.com
 description: "giser，菜鸡，菜的抠脚"
-keyword: "BY, BY Blog, 吴天的博客, 吴天, gis"
+keyword: "吴天的博客, 吴天, GISer"
 url: "http://onlywtx.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/OnlyWTX/onlywtx.github.io.git" # you code repository
