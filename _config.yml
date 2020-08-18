@@ -1,7 +1,7 @@
 # Site settings
 title: BY Blog
 SEOTitle: 吴天的博客 | BY Blog
-header-img: img/post-bg-desk.jpg
+header-img: img/logo.jpg
 email: wtx13041938212@163.com
 description: "giser，菜鸡，菜的抠脚"
 keyword: "BY, BY Blog, 吴天的博客, 吴天, gis"
@@ -12,7 +12,7 @@ github_repo: "https://github.com/OnlyWTX/onlywtx.github.io.git" # you code repos
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "hello,world?"
-sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/background.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
