@@ -1,0 +1,155 @@
+```yaml
+layout:     post   				    # 使用的布局（不需要改）
+title:      GDAL_geometry 				# 标题 
+subtitle:   geometry类的读写操作 #副标题
+date:       2020-11-09			# 时间
+author:     吴天 						# 作者
+header-img: img/background.jpg 	#这篇文章标题背景图片
+catalog: true 						# 是否归档
+tags: GDAL								#标签
+```
+
+
+```python
+from osgeo import ogr
+# 建立几何对象（geometry)
+
+# 创建一个点（point）
+point = ogr.Geometry(ogr.wkbPoint)
+point.AddPoint(1198054.34, 648493.09)
+# 创建一条线
+line = ogr.Geometry(ogr.wkbLineString)
+line.AddPoint(1116651.439379124, 637392.6969887456)
+line.AddPoint(1188804.0108498496, 652655.7409537067)
+line.AddPoint(1226730.3625203592, 634155.0816022386)
+line.AddPoint(1281307.30760719, 636467.6640211721)
+# 创建一个面
+# 先创建一个ring
+ring = ogr.Geometry(ogr.wkbLinearRing)
+ring.AddPoint(1179091.1646903288, 712782.8838459781)
+ring.AddPoint(1161053.0218226474, 667456.2684348812)
+# 把ring添加进面
+poly = ogr.Geometry(ogr.wkbPolygon)
+poly.AddGeometry(ring)
+# 创建一个带孔的多边形
+# 创建外环
+outRing = ogr.Geometry(ogr.wkbLinearRing)
+outRing.AddPoint(1154115.274565847, 686419.4442701361)
+outRing.AddPoint(1154115.274565847, 653118.2574374934)
+outRing.AddPoint(1165678.1866605144, 653118.2574374934)
+outRing.AddPoint(1165678.1866605144, 686419.4442701361)
+outRing.AddPoint(1154115.274565847, 686419.4442701361)
+# 创建内环
+innerRing = ogr.Geometry(ogr.wkbLinearRing)
+innerRing.AddPoint(1149490.1097279799, 691044.6091080031)
+innerRing.AddPoint(1149490.1097279799, 648030.5761158396)
+innerRing.AddPoint(1191579.1097525698, 648030.5761158396)
+innerRing.AddPoint(1191579.1097525698, 691044.6091080031)
+innerRing.AddPoint(1149490.1097279799, 691044.6091080031)
+# 创建面
+poly2 = ogr.Geometry(ogr.wkbPolygon)
+poly2.AddGeometry(outRing)
+poly2.AddGeometry(innerRing)
+# 创建多个点
+multipoint = ogr.Geometry(ogr.wkbMultiPoint)
+point1 = ogr.Geometry(ogr.wkbPoint)
+point1.AddPoint(1251243.7361610543, 598078.7958668759)
+multipoint.AddGeometry(point1)
+point2 = ogr.Geometry(ogr.wkbPoint)
+point2.AddPoint(1240605.8570339603, 601778.9277371694)
+multipoint.AddGeometry(point2)
+point3 = ogr.Geometry(ogr.wkbPoint)
+point3.AddPoint(1250318.7031934808, 606404.0925750365)
+multipoint.AddGeometry(point3)
+#创建多条边
+multiline = ogr.Geometry(ogr.wkbMultiLineString)
+line1 = ogr.Geometry(ogr.wkbLineString)
+line1.AddPoint(1214242.4174581182, 617041.9717021306)
+line1.AddPoint(1234593.142744733, 629529.9167643716)
+multiline.AddGeometry(line1)
+line1 = ogr.Geometry(ogr.wkbLineString)
+line1.AddPoint(1184641.3624957693, 626754.8178616514)
+line1.AddPoint(1219792.6152635587, 606866.6090588232)
+multiline.AddGeometry(line1)
+# 创建多个多边形
+multipolygon = ogr.Geometry(ogr.wkbMultiPolygon)
+# 第一个多边形
+ring1 = ogr.Geometry(ogr.wkbLinearRing)
+ring1.AddPoint(1204067.0548148106, 634617.5980860253)
+ring1.AddPoint(1204067.0548148106, 620742.1035724243)
+ring1.AddPoint(1215167.4504256917, 620742.1035724243)
+ring1.AddPoint(1215167.4504256917, 634617.5980860253)
+ring1.AddPoint(1204067.0548148106, 634617.5980860253)
+poly1 = ogr.Geometry(ogr.wkbPolygon)
+poly1.AddGeometry(ring1)
+multipolygon.AddGeometry(poly1)
+# 第二个多边形
+ring2 = ogr.Geometry(ogr.wkbLinearRing)
+ring2.AddPoint(1179553.6811741155, 647105.5431482664)
+ring2.AddPoint(1179553.6811741155, 626292.3013778647)
+ring2.AddPoint(1194354.20865529, 626292.3013778647)
+ring2.AddPoint(1194354.20865529, 647105.5431482664)
+ring2.AddPoint(1179553.6811741155, 647105.5431482664)
+poly2 = ogr.Geometry(ogr.wkbPolygon)
+poly2.AddGeometry(ring2)
+multipolygon.AddGeometry(poly2)
+# 创建GeometryCollection
+geomcol =  ogr.Geometry(ogr.wkbGeometryCollection)
+# 添加一个点
+point = ogr.Geometry(ogr.wkbPoint)
+point.AddPoint(-122.23, 47.09)
+geomcol.AddGeometry(point)
+# 添加一条线
+line = ogr.Geometry(ogr.wkbLineString)
+line.AddPoint(-122.60, 47.14)
+line.AddPoint(-122.48, 47.23)
+geomcol.AddGeometry(line)
+
+print("point:\n",point,"\nline:\n",line,"\npolygon:\n",poly,"\npoly2:\n",poly2,"\nmultipoint:\n",multipoint)
+print("multiline:\n",multiline,"\nmultipolygon:\n",multipolygon,"geometryCollection:\n")
+```
+
+    point:
+     POINT (-122.23 47.09 0) 
+    line:
+     LINESTRING (-122.6 47.14 0,-122.48 47.23 0) 
+    polygon:
+     POLYGON ((1179091.16469033 712782.883845978 0,1161053.02182265 667456.268434881 0)) 
+    poly2:
+     POLYGON ((1179553.68117412 647105.543148266 0,1179553.68117412 626292.301377865 0,1194354.20865529 626292.301377865 0,1194354.20865529 647105.543148266 0,1179553.68117412 647105.543148266 0)) 
+    multipoint:
+     MULTIPOINT (1251243.73616105 598078.795866876 0,1240605.85703396 601778.927737169 0,1250318.70319348 606404.092575036 0)
+    multiline:
+     MULTILINESTRING ((1214242.41745812 617041.971702131 0,1234593.14274473 629529.916764372 0),(1184641.36249577 626754.817861651 0,1219792.61526356 606866.609058823 0)) 
+    multipolygon:
+     MULTIPOLYGON (((1204067.05481481 634617.598086025 0,1204067.05481481 620742.103572424 0,1215167.45042569 620742.103572424 0,1215167.45042569 634617.598086025 0,1204067.05481481 634617.598086025 0)),((1179553.68117412 647105.543148266 0,1179553.68117412 626292.301377865 0,1194354.20865529 626292.301377865 0,1194354.20865529 647105.543148266 0,1179553.68117412 647105.543148266 0))) geometryCollection:
+
+
+​    
+
+
+```python
+# 从不同格式中创建点
+
+# WKT
+wkt = "POINT (1120351.5712494177 741921.4223245403)"
+point1 = ogr.CreateGeometryFromWkt(wkt)
+# WKB
+import base64
+wkb = base64.b64decode("AIAAAAFBMkfmVwo9cUEjylouFHrhAAAAAAAAAAA=")
+point2 = ogr.CreateGeometryFromWkb(wkb)
+# GeoJSON
+geojson = """{"type":"Point","coordinates":[108420.33,753808.59]}"""
+point3 = ogr.CreateGeometryFromJson(geojson)
+# GML
+gml = """<gml:Point xmlns:gml="http://www.opengis.net/gml"><gml:coordinates>108420.33,753808.59</gml:coordinates></gml:Point>"""
+point4 = ogr.CreateGeometryFromGML(gml)
+# 打印数据
+print("point1:\t",point1,"\tpoint2:\t",point2,"\npoint3:\t",point3,"\tpoint4\t",point4)
+```
+
+    point1:	 None 	point2:	 POINT (1198054.34 648493.09 0) 
+    point3:	 POINT (108420.33 753808.59) 	point4	 None
+
+
+
