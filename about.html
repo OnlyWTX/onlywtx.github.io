@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: page
 title: "About"
 description: "Hey, this is BY."
@@ -14,7 +14,7 @@ header-img: "img/post-bg-rwd.jpg"
 <!-- Chinese Version -->
 <div class="zh post-container">
 
-    <!--copied from markdown -->
+    <!-- copied from markdown
     <blockquote><p>冰冻三尺 非一日之寒<br>
     积土成山 非斯须之作</p></blockquote>
 
@@ -33,7 +33,7 @@ header-img: "img/post-bg-rwd.jpg"
         <li><a href="http://jekyll.com.cn/">jekyll</a></li>
         <li><a href="http://huangxuan.me/">Hux</a></li> 
         <li><a href="https://analytics.google.com/analytics">Google Analytics</a></li>
-    </ul>
+    </ul> -->
 </div>
 
 <!-- English Version -->
@@ -58,7 +58,7 @@ header-img: "img/post-bg-rwd.jpg"
 </div> -->
 
 <!-- Handle Language Change -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     // get nodes
     var $zh = document.querySelector(".zh");
     var $en = document.querySelector(".en");
@@ -95,13 +95,13 @@ header-img: "img/post-bg-rwd.jpg"
 
     // init
     _render();
-</script>
+</script> -->
 
 
 <!-- Gitalk 评论 start  -->
 {% if site.gitalk.enable %}
 <!-- Gitalk link  -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 
 <div id="gitalk-container"></div>
@@ -116,21 +116,21 @@ header-img: "img/post-bg-rwd.jpg"
     id: 'about',
     });
     gitalk.render('gitalk-container');
-</script>
+</script> -->
 {% endif %}
 <!-- Gitalk end -->
 
  <!-- disqus 评论框 start  -->
 {% if site.disqus.enable %}
 
-<div class="comment">
+<!-- <div class="comment">
     <div id="disqus_thread" class="disqus-thread">
     </div>
-</div>
+</div> -->
 <!-- disqus 评论框 end -->
 
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "{{site.disqus.username}}";
     var disqus_identifier = "{{site.disqus.username}}/{{page.url}}";
@@ -141,7 +141,7 @@ header-img: "img/post-bg-rwd.jpg"
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-</script>
+</script> -->
 <!-- disqus 公共JS代码 end -->
 {% endif %}
-
+ -->

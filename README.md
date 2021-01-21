@@ -1,3 +1,1 @@
-hello, world!
-
-hello, my blog!
+随时准备丢弃的一个博客，，，
