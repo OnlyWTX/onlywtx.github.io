@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        .el-tabs__item {
+            font-size: larger;
+        }
+
+        .demo{
+            border: 2px solid;
+            border-radius: 10px;
+    box-shadow: 00010px gray;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 700px;
+        }
+        .demo img{
+            box-shadow: 00010px#009688;
+    border: 10px solid #009688;
+    outline: dashed 10px white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id='app' style="width:80%;margin-left: 10%;margin-top: 40px;">
+        <el-tabs v-model="activeName">
+          <el-tab-pane label="吃饼干" name="first">
+              <div class="demo">
+                <img src='./img/party/eatCookie.gif'>
+              </div>
+
+          </el-tab-pane>
+          <el-tab-pane label="吹杯子" name="second">
+
+          </el-tab-pane>
+          <el-tab-pane label="桌上冰壶" name="third">
+              
+          </el-tab-pane>
+          <el-tab-pane label="呼啦圈连连看" name="fourth">
+              
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        new Vue({
+          el:'#app',
+          data() {
+            return {
+              activeName: 'first'
+            };
+          },
+        })
+      </script>
+</html>
